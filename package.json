@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "biome check --verbose",
+    "lint": "oxlint",
     "lint:fix": "biome check --apply",
-    "format": "biome format --write .",
-    "typecheck": "tsc --noEmit"
+    "format": "oxfmt",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -18,12 +19,12 @@
     "@react-three/postprocessing": "^3.0.4",
     "framer-motion": "^12.35.2",
     "gsap": "^3.14.2",
-    "lucide-react": "^0.563.0",
+    "lucide-react": "^0.577.0",
     "postprocessing": "^6.38.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1",
-    "three": "^0.182.0",
+    "three": "^0.183.2",
     "tone": "^15.1.22"
   },
   "devDependencies": {
@@ -32,9 +33,11 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.4",
     "autoprefixer": "^10.4.27",
-    "biome": "^0.3.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.3",
+    "oxfmt": "^0.37.0",
+    "oxlint": "^1.52.0",
     "postcss": "^8.5.8",
-    "prettier": "^3.8.1",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
@@ -52,6 +55,12 @@
       "biome:recommended",
       "biome:react",
       "biome:typescript"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "oxlint --fix",
+      "oxfmt"
     ]
   }
 }
