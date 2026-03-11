@@ -1,14 +1,14 @@
 {
   "name": "wake-transmission",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "oxlint",
-    "lint:fix": "biome check --apply",
+    "lint:fix": "oxlint --fix . && oxfmt",
     "format": "oxfmt",
     "typecheck": "tsc --noEmit",
     "prepare": "husky"
@@ -36,11 +36,17 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.3.3",
     "oxfmt": "^0.37.0",
-    "oxlint": "^1.52.0",
+    "oxlint": "^1.53.0",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "oxlint --fix",
+      "oxfmt"
+    ]
   },
   "biome": {
     "files": [
@@ -55,12 +61,6 @@
       "biome:recommended",
       "biome:react",
       "biome:typescript"
-    ]
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "oxlint --fix",
-      "oxfmt"
     ]
   }
 }

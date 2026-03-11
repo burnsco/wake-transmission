@@ -47,6 +47,7 @@ bun run preview
 ### Animation Styles System
 
 Eight distinct wave deformation algorithms in `AuroraField.useFrame()`:
+
 - **Classic**: Direct frequency-reactive waves
 - **Pulse**: Breathing pulses from center
 - **Spiral**: Rotating vortex with variable speed based on audio intensity
@@ -61,6 +62,7 @@ All styles read from `AudioData.low/mid/high` and manipulate grid vertex positio
 ### Theme System
 
 Color themes define palettes for grid, frequency bars, cores, and lighting. Each theme has:
+
 - `background`, `gridBase`, `gridEmissive`
 - `low/mid/high` colors with separate emissive values
 - `accent`, `lightPrimary`, `lightSecondary`
@@ -107,6 +109,7 @@ Themes are injected via React Context and applied to materials dynamically.
 ### Local Development with Icecast Stream
 
 The app proxies an Icecast stream from a local network device during development:
+
 - **Dev mode**: `/local-stream.ogg` → proxied to `http://192.168.2.124:8003/radio.ogg` (see `vite.config.ts`)
 - **Production**: `/radio` → handled by Cloudflare Function that fetches from `https://radio.coreyburns.ca/radio.ogg`
 
@@ -122,6 +125,7 @@ If the local stream is unavailable, update the proxy target in `vite.config.ts` 
 ## Post-processing Effects
 
 Managed by `@react-three/postprocessing`:
+
 - **Bloom**: Luminance threshold 0.5, intensity 1.5, mipmapBlur enabled
 - **Noise**: Opacity 0.05 for film grain
 - **Vignette**: Offset 0.1, darkness 1.1
