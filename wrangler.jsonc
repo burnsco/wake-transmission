@@ -1,7 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "wake-transmission",
-  "production_url": "https://waking.coreyburns.ca",
-  "pages_build_output_dir": "./dist",
-  "compatibility_date": "2024-11-01",
+  "main": "worker.js",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "routes": [
+    {
+      "pattern": "waking.coreyburns.ca",
+      "custom_domain": true
+    }
+  ],
+  "compatibility_date": "2024-11-01"
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "bun run build && bunx wrangler pages deploy dist --project-name wake-transmission --branch main",
+    "deploy": "bun run build && rm -f dist/_redirects && bunx wrangler deploy",
     "deploy:prod": "bun run deploy",
     "cf:status": "../scripts/cf-portfolio.sh status wake-transmission",
     "preview": "vite preview",
