@@ -4,13 +4,13 @@
   "main": "worker.js",
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
   "routes": [
     {
       "pattern": "waking.coreyburns.ca",
-      "custom_domain": true
-    }
+      "custom_domain": true,
+    },
   ],
-  "compatibility_date": "2024-11-01"
+  "compatibility_date": "2024-11-01",
 }

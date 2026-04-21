@@ -13,6 +13,7 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix . && oxfmt",
     "format": "oxfmt",
+    "format:check": "oxfmt --check .",
     "typecheck": "tsc --noEmit",
     "prepare": "husky"
   },
@@ -26,12 +27,12 @@
     "postprocessing": "^6.39.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-router-dom": "^7.14.1",
+    "react-router-dom": "^7.14.2",
     "three": "^0.184.0",
     "tone": "^15.1.22"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.2",
+    "@tailwindcss/postcss": "^4.2.4",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
@@ -41,7 +42,7 @@
     "oxfmt": "^0.46.0",
     "oxlint": "^1.61.0",
     "postcss": "^8.5.10",
-    "tailwindcss": "^4.2.2",
+    "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",
     "vite": "^8.0.9"
   },
@@ -49,21 +50,6 @@
     "*.{js,jsx,ts,tsx}": [
       "oxlint --fix",
       "oxfmt"
-    ]
-  },
-  "biome": {
-    "files": [
-      "src",
-      "vite.config.ts",
-      "index.html",
-      "functions",
-      "*.ts",
-      "*.tsx"
-    ],
-    "extends": [
-      "biome:recommended",
-      "biome:react",
-      "biome:typescript"
     ]
   }
 }

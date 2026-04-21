@@ -12,6 +12,11 @@ export interface AudioData {
 const sourceMap = new WeakMap<HTMLAudioElement, MediaElementAudioSourceNode>();
 let audioContext: AudioContext | null = null;
 
+const sanitizeLevel = (value: number) => {
+  if (!Number.isFinite(value) || Number.isNaN(value)) return 0;
+  return Math.max(0, value / 100);
+};
+
 function getAudioContext(): AudioContext {
   if (!audioContext) {
     audioContext = new AudioContext();
@@ -109,18 +114,12 @@ export function useAudioAnalyzer(audioElement: HTMLAudioElement | null, isEnable
         high: high / (binCount - 50),
       };
 
-      // Helper to sanitize values
-      const sanitize = (val: number) => {
-        if (!Number.isFinite(val) || Number.isNaN(val)) return 0;
-        return Math.max(0, val / 100);
-      };
-
       // Map to 0-1 range roughly (dB is usually -100 to 0)
       const normalizedData = {
-        volume: sanitize(currentData.volume),
-        low: sanitize(currentData.low),
-        mid: sanitize(currentData.mid),
-        high: sanitize(currentData.high),
+        volume: sanitizeLevel(currentData.volume),
+        low: sanitizeLevel(currentData.low),
+        mid: sanitizeLevel(currentData.mid),
+        high: sanitizeLevel(currentData.high),
       };
 
       // Smooth the data using GSAP for that "smooth motion" requirement
